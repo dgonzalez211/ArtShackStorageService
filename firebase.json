@@ -23,6 +23,13 @@
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
-    ]
+    ],
+    "rewrites": [{
+      "source": "**",
+      "run": {
+        "serviceId": "storage-service",
+        "region": "us-east1"
+      }
+    }]
   }
 }
