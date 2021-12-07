@@ -1,0 +1,23 @@
+{
+  "name": "artshackstorageservice",
+  "version": "1.0.0",
+  "description": "User generated content storage web service using Google Cloud Storage for ArtShack application - MisionTIC 2022",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dmarrugoa/ArtShackStorageService.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dmarrugoa/ArtShackStorageService/issues"
+  },
+  "homepage": "https://github.com/dmarrugoa/ArtShackStorageService#readme",
+  "devDependencies": {
+    "firebase-tools": "^9.23.0"
+  }
+}
