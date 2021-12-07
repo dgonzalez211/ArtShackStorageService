@@ -4,7 +4,8 @@
   "description": "User generated content storage web service using Google Cloud Storage for ArtShack application - MisionTIC 2022",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "echo \"Build success!\""
   },
   "repository": {
     "type": "git",
