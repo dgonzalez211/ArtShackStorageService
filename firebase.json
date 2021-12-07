@@ -16,5 +16,13 @@
   "bugs": {
     "url": "https://github.com/dmarrugoa/ArtShackStorageService/issues"
   },
-  "homepage": "https://github.com/dmarrugoa/ArtShackStorageService#readme"
+  "homepage": "https://github.com/dmarrugoa/ArtShackStorageService#readme",
+  "hosting": {
+    "public": "static",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
 }
