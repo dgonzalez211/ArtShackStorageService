@@ -1,23 +1,50 @@
-from flask import Flask, render_template, make_response
-import os
-import time
+from os import path
+from typing import Dict, Optional
 
-app = Flask(__name__)
+from flask import Flask
+from flask_migrate import Migrate
+from flask_sqlalchemy import SQLAlchemy
 
-def format_server_time():
-  server_time = time.localtime()
-  return time.strftime("%I:%M:%S %p", server_time)
+from error_handling import register_error_handlers
 
-@app.route('/')
-def index():
-    context = { 'server_time': format_server_time() }
-    # 1
-    template = render_template('index.html', context=context)
-    # 2
-    response = make_response(template)
-    # 3
-    response.headers['Cache-Control'] = 'public, max-age=300, s-maxage=600'
-    return response
+APP_ROOT = path.dirname(path.abspath(__file__))
 
-if __name__ == '__main__':
-    app.run(debug=True,host='0.0.0.0',port=int(os.environ.get('PORT', 8080)))
+db = SQLAlchemy()
+migrate = Migrate()
+
+
+class App(Flask):
+
+    def __init__(self, config: Optional[Dict] = None):
+        Flask.__init__(self, __name__)
+
+        self.url_map.strict_slashes = False
+        self.load_config()
+
+        if config:
+            self.config.update(config)
+
+        register_error_handlers(self)
+        self.register_blueprints()
+        self.setup_depots()
+
+        db.init_app(self)
+        migrate.init_app(self, db)
+
+    def load_config(self):
+        """Load the app's config from app_config.py"""
+
+        file_path = path.join(APP_ROOT, 'config', 'app_config.py')
+        self.config.from_pyfile(file_path)
+
+    def register_blueprints(self):
+        """Register all blueprints"""
+
+        from .users import users
+        self.register_blueprint(users)
+
+    def setup_depots(self):
+        """Setup the file depots"""
+
+        from .config import depot
+        depot.init_depots(self)
