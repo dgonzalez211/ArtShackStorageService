@@ -5,7 +5,7 @@ from flask import Flask
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 
-from error_handling import register_error_handlers
+from .error_handling import register_error_handlers
 
 APP_ROOT = path.dirname(path.abspath(__file__))
 

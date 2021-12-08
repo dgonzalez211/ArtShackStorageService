@@ -1,7 +1,7 @@
 from marshmallow_jsonapi import fields
 from marshmallow_jsonapi.flask import Schema
 
-from src.app import db
+from server.src.app import db
 
 
 class User(db.Model):

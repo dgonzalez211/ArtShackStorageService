@@ -5,7 +5,7 @@ from sqlalchemy.exc import IntegrityError
 from webargs import fields
 from webargs.flaskparser import use_args
 
-from src.app import db
+from server.src.app import db
 from .models import User, UserSchema
 
 users = Blueprint('users', __name__, url_prefix='/users')
